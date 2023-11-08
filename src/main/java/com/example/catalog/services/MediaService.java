@@ -1,7 +1,6 @@
 package com.example.catalog.services;
 
 import com.example.catalog.entities.Media;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
