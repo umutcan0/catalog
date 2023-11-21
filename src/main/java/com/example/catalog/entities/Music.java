@@ -3,6 +3,8 @@ package com.example.catalog.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "music")
@@ -19,4 +21,7 @@ public class Music {
 
     @Column(name = "album")
     private String album;
+
+    @OneToMany(mappedBy = "music", cascade = CascadeType.ALL)
+    private List<Media> media;
 }

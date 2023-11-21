@@ -5,7 +5,9 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "media")
+@Table(name = "media", indexes = {
+        @Index(name = "idx_combined_columns", columnList = "media_type, media_id")
+})
 public class Media {
 
     @Id
@@ -26,4 +28,8 @@ public class Media {
 
     @Column(name= "media_id")
     private Long mediaId;
+
+    @ManyToOne
+    @JoinColumn(name = "music_id") //
+    private Music music;
 }

@@ -1,6 +1,8 @@
 package com.example.catalog.services;
 
 import com.example.catalog.entities.Music;
+import com.example.catalog.exception.MediaNotFoundException;
+import com.example.catalog.exception.MusicNotFoundException;
 import com.example.catalog.repositories.MusicRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,10 @@ public class MusicServiceImpl implements MusicService{
 
     @Override
     public Music getMusic(Long id){
-        return musicRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Music mevcut değil"));
+        Music music=musicRepository.findByIdWithMedia(id).orElseThrow(()-> {
+            throw new MusicNotFoundException("Music mevcut değil");
+        });
+        return music;
     }
     @Override
     public List<Music> getAllMusic(){

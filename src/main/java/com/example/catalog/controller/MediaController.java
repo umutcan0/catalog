@@ -19,6 +19,12 @@ public class MediaController {
         return mediaService.getMedia(id);
     }
 
+    @GetMapping("/{mediaType}/{mediaId}")
+    public Media getMediaForContent(@PathVariable Long mediaType,
+                                    @PathVariable Long mediaId){
+        return mediaService.getMediaForContent(mediaType,mediaId);
+    }
+
     @GetMapping("/getAll")
     public List<Media> getAllMedia(){
         return mediaService.getAllMedia();

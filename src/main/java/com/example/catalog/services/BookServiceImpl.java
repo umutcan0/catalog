@@ -1,6 +1,7 @@
 package com.example.catalog.services;
 
 import com.example.catalog.entities.Book;
+import com.example.catalog.exception.BookNotFoundException;
 import com.example.catalog.repositories.BookRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,9 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public Book getBook(Long id){
-        return bookRepository.findById(id).orElseThrow(() ->
-                new EntityNotFoundException("Kullanıcı bulunamadı"));
+        return bookRepository.findById(id).orElseThrow(() ->{
+            throw new BookNotFoundException("Book mevcut değil");
+        });
     }
 
     @Override

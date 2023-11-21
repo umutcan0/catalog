@@ -1,6 +1,8 @@
 package com.example.catalog.services;
 
 import com.example.catalog.entities.Series;
+import com.example.catalog.exception.MediaNotFoundException;
+import com.example.catalog.exception.SeriesNotFoundException;
 import com.example.catalog.repositories.SeriesRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,9 @@ public class SeriesServiceImpl implements SeriesService{
 
     @Override
     public Series getSeries(Long id){
-        return seriesRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Series mevcut değil"));
+        return seriesRepository.findById(id).orElseThrow(()->{
+            throw new SeriesNotFoundException("Series mevcut değil");
+        });
     }
     @Override
     public List<Series> getAllSeries(){

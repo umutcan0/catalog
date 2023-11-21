@@ -1,6 +1,7 @@
 package com.example.catalog.services;
 
 import com.example.catalog.entities.Media;
+import com.example.catalog.exception.MediaNotFoundException;
 import com.example.catalog.repositories.MediaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,14 @@ public class MediaServiceImpl implements MediaService{
 
     @Override
     public Media getMedia(Long id){
-        return mediaRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Media mevcut değil"));
+        return mediaRepository.findById(id).orElseThrow(()-> {
+            throw new MediaNotFoundException("Media mevcut değil");
+        });
+    }
+
+    @Override
+    public Media getMediaForContent(Long mediaType, Long mediaId){
+        return mediaRepository.findByMediaTypeAndMediaId(mediaType,mediaId);
     }
 
     @Override
