@@ -1,5 +1,7 @@
-package com.example.catalog.exception;
+package com.example.catalog.advice;
 
+import com.example.catalog.exception.BadRequestException;
+import com.example.catalog.dto.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

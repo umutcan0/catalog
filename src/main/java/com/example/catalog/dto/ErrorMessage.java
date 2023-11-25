@@ -1,4 +1,4 @@
-package com.example.catalog.exception;
+package com.example.catalog.dto;
 
 import java.util.Date;
 
