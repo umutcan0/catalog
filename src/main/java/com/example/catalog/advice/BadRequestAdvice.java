@@ -1,32 +1,30 @@
 package com.example.catalog.advice;
 
 import com.example.catalog.exception.BadRequestException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
+import com.example.catalog.dto.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.Locale;
+import java.util.Date;
 
-@RestControllerAdvice
-public class BadRequestAdvice {
-
-    @Autowired
-    private MessageSource messageSource;
+@ControllerAdvice
+public class BadRequestAdvice extends ResponseEntityExceptionHandler {
 
     @ResponseBody
-    @ExceptionHandler({BadRequestException.class})
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    ResponseEntity badRequestAdvice(BadRequestException exception, Locale locale) {
-
-        String messageName = exception.getMessageName();
-        Object[] args = exception.getArgs();
-
-        String message = messageSource.getMessage(messageName, args, locale);
-        return ResponseEntity.badRequest().body(message);
+    @ExceptionHandler(value = {BadRequestException.class,RuntimeException.class})
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    ResponseEntity<Object> badRequestAdvice(BadRequestException exception) {
+        ErrorMessage errorMessage = new ErrorMessage(
+                404,
+                new Date(),
+                exception.getMessage(),
+                ""
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }
 }
