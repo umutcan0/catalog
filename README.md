@@ -22,15 +22,15 @@ such as adding, updating, deleting, and retrieving catalog items.
 
 📁 Project Structure
 
-Catalog
-│── advice          # Custom exception handling and global error handling
-│── controller      # REST API controllers handling client requests
-│── dto            # Data Transfer Objects for structured data management
-│── entity         # JPA entities representing database models
-│── exception      # Custom exceptions for better error handling
-│── repository     # JPA repositories for database operations
-│── service        # Business logic layer implementing core functionalities
-│── test           # Unit and integration tests for ensuring reliability
+Catalog  
+│── advice          # Custom exception handling and global error handling  
+│── controller      # REST API controllers handling client requests  
+│── dto            # Data Transfer Objects for structured data management  
+│── entity         # JPA entities representing database models  
+│── exception      # Custom exceptions for better error handling  
+│── repository     # JPA repositories for database operations  
+│── service        # Business logic layer implementing core functionalities  
+│── test           # Unit and integration tests for ensuring reliability  
 
 
 🛠 Technologies Used
