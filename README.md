@@ -1,5 +1,7 @@
 Catalog - A Modern Catalog Management System
 
+📌 Project Description
+
 Welcome to Catalog! This robust and scalable catalog management system, developed using Java Spring Boot, provides a structured backend architecture to efficiently manage operations 
 such as adding, updating, deleting, and retrieving catalog items.
 
@@ -93,9 +95,6 @@ This project is licensed under the MIT License.
 📌 Author
 
 Umut Can BAL - Java |Spring Boot - Backend Developer | Passionate about Microservices & Scalable Applications
-
-📌 Connect with me on LinkedIn - https://www.linkedin.com/in/umutcanbal/ 
-📌 Connect with me on Gmail - umutcanbal123@gmail.com
 
 🎬 Happy Coding! 🚀
 
